@@ -6,13 +6,14 @@ If anyone is looking to make the Container faster during tests, this might be a 
 
 ## Running the test suites
 
-To run the tests without the container...
+To clone, composer install, and run both suites, you can use the following script in your terminal
+
 ```
-$ ./vendor/bin/phpunit --testsuite=WithoutContainer
-```
-and you guessed it, with the container...
-```
-$ ./vendor/bin/phpunit --testsuite=Container
+git clone https://github.com/timacdonald/laravel-container-speed-test
+cd laravel-container-speed-test
+composer install
+vendor/bin/phpunit --testsuite=WithoutContainer
+vendor/bin/phpunit --testsuite=Container
 ```
 
 ## The suites
