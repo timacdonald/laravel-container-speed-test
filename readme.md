@@ -6,13 +6,6 @@ If anyone is looking to make the Container faster during tests, this might be a 
 
 ## Running the test suites
 
-
-Would love you to run the tests and let me know how long they take, along with some additional information:
-
-- PHP version
-- Operating system version
-- Xdebug on / off (would love results from both if you have the time)
-
 To clone, composer install, and run both suites, you can use the following script in your terminal
 
 ```
@@ -23,9 +16,19 @@ vendor/bin/phpunit --testsuite=WithoutContainer --repeat=3
 vendor/bin/phpunit --testsuite=Container --repeat=3
 ```
 
-If you have access to multiple machines / platforms, I would love to see the results from them as well...but I might be stretching the friendship at that point 😁
-
 We are running each suite 3 times to normalise the PHPUnit startup time.
+
+## Reporting your results
+
+Would love you to run the tests and let me know how long they take, along with some additional information:
+
+- PHP version
+- Operating system version
+- Xdebug on / off (would love results from both if you have the time)
+
+[Send your results over to my Twitter post](https://twitter.com/timacdonald87/status/1144067916146462720).
+
+If you have access to multiple machines / platforms, I would love to see the results from them as well...but I might be stretching the friendship at that point 😁
 
 ## The suites
 
