@@ -6,7 +6,7 @@ If anyone is looking to make the Container faster during tests, this might be a 
 
 ## Running the test suites
 
-**Please turn XDebug off while running the suites if you can**
+**Please turn Xdebug off while running the suites if you can**
 
 To clone, composer install, and run both suites, you can use the following script in your terminal
 
