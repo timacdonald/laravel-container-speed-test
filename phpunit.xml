@@ -13,7 +13,7 @@
             <directory suffix="Test.php">./tests/WithoutContainer</directory>
         </testsuite>
 
-        <testsuite name="Container">
+        <testsuite name="WithContainer">
             <directory suffix="Test.php">./tests/Container</directory>
         </testsuite>
     </testsuites>
