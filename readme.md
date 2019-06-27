@@ -18,7 +18,7 @@ vendor/bin/phpunit --testsuite=Container
 
 ## The suites
 
-Each suite contains the same test files and methods. Each suite contains 100 test files, each file containing 15 test methods, resulting in 1,500 tests in total per suite.
+Each suite contains the same test files and methods but they extend different `TestCase` classes. Each suite contains 100 test files, each file containing 15 test methods, resulting in 1,500 tests in total per suite.
 
 The container test suite extends the `TestCase` class the comes out of the box with Laravel, and the other extends the PHPUnit `TestCase` class directly.
 
