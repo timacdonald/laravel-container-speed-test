@@ -6,7 +6,12 @@ If anyone is looking to make the Container faster during tests, this might be a 
 
 ## Running the test suites
 
-**Please turn Xdebug off while running the suites if you can**
+
+Would love you to run the tests and let me know how long they take, along with some additional information:
+
+- PHP version
+- Operating system version
+- Xdebug on / off (would love results from both if you have the time)
 
 To clone, composer install, and run both suites, you can use the following script in your terminal
 
