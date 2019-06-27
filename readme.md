@@ -12,7 +12,7 @@ $ ./vendor/bin/phpunit --testsuite=WithoutContainer
 ```
 and you guessed it, with the container...
 ```
-$ ./vendor/bin/phpunit --testsuite=WithContainer
+$ ./vendor/bin/phpunit --testsuite=Container
 ```
 
 ## The suites
