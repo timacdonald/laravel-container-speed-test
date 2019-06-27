@@ -23,6 +23,8 @@ vendor/bin/phpunit --testsuite=WithoutContainer --repeat=3
 vendor/bin/phpunit --testsuite=Container --repeat=3
 ```
 
+If you have access to multiple machines / platforms, I would love to see the results from them as well...but I might be stretching the friendship at that point 😁
+
 We are running each suite 3 times to normalise the PHPUnit startup time.
 
 ## The suites
