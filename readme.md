@@ -12,9 +12,11 @@ To clone, composer install, and run both suites, you can use the following scrip
 git clone https://github.com/timacdonald/laravel-container-speed-test
 cd laravel-container-speed-test
 composer install
-vendor/bin/phpunit --testsuite=WithoutContainer
-vendor/bin/phpunit --testsuite=Container
+vendor/bin/phpunit --testsuite=WithoutContainer --repeat=3
+vendor/bin/phpunit --testsuite=Container --repeat=3
 ```
+
+We are running each suite 3 times to normalise the PHPUnit startup time.
 
 ## The suites
 
