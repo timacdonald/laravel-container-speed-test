@@ -1,5 +1,8 @@
 <?php
 
+mkdir(__DIR__.'/Container');
+mkdir(__DIR__.'/WithoutContainer');
+
 $containerTestStub = file_get_contents(__DIR__.'/container_test_stub.php');
 $withoutContainerTestStub = file_get_contents(__DIR__.'/without_container_test_stub.php');
 $methodStub = file_get_contents(__DIR__.'/method_stub.php');

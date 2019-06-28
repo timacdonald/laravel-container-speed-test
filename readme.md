@@ -9,7 +9,7 @@ If anyone is looking to make the Container faster during tests, this might be a 
 To clone, composer install, and run both suites, you can use the following script in your terminal
 
 ```
-git clone https://github.com/timacdonald/laravel-container-speed-test
+git clone https://github.com/timacdonald/laravel-container-speed-test:5.6
 cd laravel-container-speed-test
 composer install
 vendor/bin/phpunit --testsuite=WithoutContainer --repeat=3
