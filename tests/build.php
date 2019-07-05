@@ -75,24 +75,30 @@ for ($i = 0; $i < 100; $i++) {
  * Generate the route properties to use when making the route files.
  */
 
-$routes = [];
+$create_routes = function () use ($faker) {
+    $routes = [];
 
-for ($i = 0; $i < 75; $i++) {
-    $routes['web'][] = [
-        'url' => $faker->unique()->regexify('[a-z]{4,10}-[a-z]{4,10}\/{[a-z]{4,10}}\/[a-z]{4,10}'),
-        'name' => $faker->unique()->domainName,
-        'method' => $faker->randomElement(['get', 'post', 'patch', 'delete']),
-        'function' => $faker->randomElement(['index', 'create', 'edit', 'update', 'destroy']),
-        'controller' => str_replace([' ', '-'], ['', ''], $faker->unique()->jobTitle.'Controller'),
-    ];
-}
+    for ($i = 0; $i < 75; $i++) {
+        $routes['web'][] = [
+            'url' => $faker->unique()->regexify('[a-z]{4,10}-[a-z]{4,10}\/{[a-z]{4,10}}\/[a-z]{4,10}'),
+            'name' => $faker->unique()->domainName,
+            'method' => $faker->randomElement(['get', 'post', 'patch', 'delete']),
+            'function' => $faker->randomElement(['index', 'create', 'edit', 'update', 'destroy']),
+            'controller' => str_replace([' ', '-'], ['', ''], $faker->unique()->jobTitle.'Controller'),
+        ];
+    }
 
-$routes['api'] = array_map(function ($properties) {
-    return array_merge($properties, [
-        'url' => 'api/'.$properties['url'],
-        'name' => 'api.'.$properties['name'],
-    ]);
-}, $routes['web']);
+    $routes['api'] = array_map(function ($properties) {
+        return array_merge($properties, [
+            'url' => 'api/'.$properties['url'],
+            'name' => 'api.'.$properties['name'],
+        ]);
+    }, $routes['web']);
+
+    return $routes;
+};
+
+$routes = $create_routes();
 
 $create_route_file('web', $build_routes($routes['web']));
 $create_route_file('api', $build_routes($routes['api']));
