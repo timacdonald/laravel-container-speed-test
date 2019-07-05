@@ -11,7 +11,7 @@ require __DIR__.'/../vendor/autoload.php';
 $faker = Factory::create();
 
 $stub = function ($name) {
-    return file_get_contents(__DIR__."/{$name}_stub.php");
+    return file_get_contents(__DIR__."/stubs/{$name}_stub.php");
 };
 
 $create_test = function ($suite, $name, $content) {
