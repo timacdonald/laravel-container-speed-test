@@ -68,7 +68,8 @@ class Builder
 
         $routes['api'] = array_map(function ($properties) {
             return array_merge($properties, [
-                'url' => 'api/'.$properties['url'],
+                // The middleware already prefixes with /api
+                'url' => $properties['url'],
                 'name' => 'api.'.$properties['name'],
             ]);
         }, $routes['web']);
