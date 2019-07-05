@@ -22,6 +22,21 @@ $create_route_file = function ($name, $content) {
     file_put_contents(__DIR__."/../routes/{$name}.php", '<?php'.$content);
 };
 
+$create_controller_files = function (string $group, $routes) use ($stub) {
+    static $template;
+
+    $template = $template ?? $stub('controller');
+
+    foreach ($routes as $route) {
+        $name = $route["controller"];
+
+        $content = $template;
+        $content = str_replace('{className}', $name, $content);
+
+        file_put_contents(__DIR__."/../app/Http/Controllers/{$name}.php", $content);
+    }
+};
+
 $build_routes = function ($properties) use ($stub) {
     return array_reduce($properties, function ($body, $properties) use ($stub) {
         return $body.array_reduce(array_keys($properties), function ($route, $property) use ($properties) {
@@ -68,7 +83,7 @@ for ($i = 0; $i < 75; $i++) {
         'name' => $faker->unique()->domainName,
         'method' => $faker->randomElement(['get', 'post', 'patch', 'delete']),
         'function' => $faker->randomElement(['index', 'create', 'edit', 'update', 'destroy']),
-        'controller' => str_replace(' ', '', $faker->unique()->jobTitle.'Controller'),
+        'controller' => str_replace([' ', '-'], ['', ''], $faker->unique()->jobTitle.'Controller'),
     ];
 }
 
@@ -81,3 +96,6 @@ $routes['api'] = array_map(function ($properties) {
 
 $create_route_file('web', $build_routes($routes['web']));
 $create_route_file('api', $build_routes($routes['api']));
+
+$create_controller_files('web', $routes['web']);
+$create_controller_files('api', $routes['api']);
