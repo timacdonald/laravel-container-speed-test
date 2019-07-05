@@ -4,6 +4,10 @@ use Illuminate\Contracts\Console\Kernel;
 
 require __DIR__.'/../vendor/autoload.php';
 
+// Build the test environment
+// This is idempotent so running it repeatedly won't hurt anything
+require __DIR__ . "/build.php";
+
 /*
 |--------------------------------------------------------------------------
 | Bootstrap the testing environment
