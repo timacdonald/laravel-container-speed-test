@@ -98,7 +98,19 @@ $create_routes = function () use ($faker) {
     return $routes;
 };
 
-$routes = $create_routes();
+$load_routes = function () use ($create_routes) {
+    $path = __DIR__ . "/meta/routes.php";
+
+    if (! file_exists($path)) {
+        $contents = var_export($create_routes(), true);
+
+        file_put_contents($path, "<?php return {$contents};");
+    }
+
+    return require $path;
+};
+
+$routes = $load_routes();
 
 $create_route_file('web', $build_routes($routes['web']));
 $create_route_file('api', $build_routes($routes['api']));

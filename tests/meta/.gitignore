@@ -1,0 +1,4 @@
+# This folder is used to store metadata so that builds are semi-reproducible
+
+*
+!.gitignore
