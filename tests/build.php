@@ -25,3 +25,9 @@ $builder->createRouteFile("api", $builder->buildRoutes($routes["api"]));
  */
 $builder->createControllerFiles("web", $routes["web"]);
 $builder->createControllerFiles("api", $routes["api"]);
+
+/**
+ * Create the HTTP Tests
+ */
+$builder->createHttpTests("web", $routes["web"]);
+$builder->createHttpTests("api", $routes["api"]);

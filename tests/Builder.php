@@ -118,4 +118,33 @@ class Builder
             $this->createTest('WithoutContainer', "Test{$i}Test", $without);
         }
     }
+
+    public function createHttpTests(string $group, $routes)
+    {
+        $body = "";
+
+        foreach ($routes as $i => $route) {
+            $body .= $this->methodStubForRoute($i, $route);
+        }
+
+        $group = ucfirst($group);
+        $className =  "TestHttp{$group}Test";
+
+        $contents = $this->stub("container_test");
+
+        $contents = str_replace("{body}", $body, $contents);
+        $contents = str_replace("{className}", $className, $contents);
+
+        $this->createTest("Http", $className, $contents);
+    }
+
+    private function methodStubForRoute($i, $route)
+    {
+        $contents = $this->stub('route_method');
+        $contents = str_replace('{method_name}', "test_{$i}", $contents);
+        $contents = str_replace('{http_path}', $route["url"], $contents);
+        $contents = str_replace('{http_method}', $route["method"], $contents);
+
+        return $contents;
+    }
 }
