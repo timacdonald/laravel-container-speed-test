@@ -53,7 +53,7 @@ $build_routes = function ($properties) use ($stub) {
 $body = '';
 
 for ($i = 0; $i < 15; $i++) {
-    $body .= str_replace('{method_name}', "test_{$i}", $stub('method'));
+    $body .= str_replace('{method_name}', "test_{$i}", $stub('simple_method'));
 }
 
 /**
