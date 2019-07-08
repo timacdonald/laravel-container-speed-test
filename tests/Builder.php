@@ -130,7 +130,7 @@ class Builder
         $group = ucfirst($group);
         $className =  "TestHttp{$group}Test";
 
-        $contents = $this->stub("container_test");
+        $contents = $this->stub("http_test");
 
         $contents = str_replace("{body}", $body, $contents);
         $contents = str_replace("{className}", $className, $contents);
