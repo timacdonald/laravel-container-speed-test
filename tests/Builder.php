@@ -52,11 +52,11 @@ class Builder
         }, '');
     }
 
-    public function createRoutes()
+    public function createRoutes($count = 500)
     {
         $routes = [];
 
-        for ($i = 0; $i < 500; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $routes['web'][] = [
                 'url' => $this->faker->unique()->regexify('[a-z]{4,10}-[a-z]{4,10}\/{[a-z]{4,10}}\/[a-z]{4,10}'),
                 'name' => $this->faker->unique()->domainName,
