@@ -90,7 +90,7 @@ class Builder
         return require $path;
     }
 
-    public function createSimpleTests()
+    public function createSimpleTests($count = 1500)
     {
         /**
          * Generate the methods used in each of the Container and WithoutContainer
@@ -99,7 +99,7 @@ class Builder
 
         $body = '';
 
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $body .= str_replace('{method_name}', "test_{$i}", $this->stub('simple_method'));
         }
 
@@ -107,16 +107,14 @@ class Builder
          * Generate the test files for both the Conatainer and WithoutContainer test suite.
          */
 
-        for ($i = 0; $i < 100; $i++) {
-            $container = str_replace('{className}', "Test{$i}Test", $this->stub('container_test'));
-            $without = str_replace('{className}', "Test{$i}Test", $this->stub('without_container_test'));
+        $container = str_replace('{className}', "Test{$i}Test", $this->stub('container_test'));
+        $without = str_replace('{className}', "Test{$i}Test", $this->stub('without_container_test'));
 
-            $container = str_replace('{body}', $body, $container);
-            $without = str_replace('{body}', $body, $without);
+        $container = str_replace('{body}', $body, $container);
+        $without = str_replace('{body}', $body, $without);
 
-            $this->createTest('Container', "Test{$i}Test", $container);
-            $this->createTest('WithoutContainer', "Test{$i}Test", $without);
-        }
+        $this->createTest('Simple', "ContainerTest", $container);
+        $this->createTest('Simple', "WithoutContainer", $without);
     }
 
     public function createHttpTests(string $group, $routes)

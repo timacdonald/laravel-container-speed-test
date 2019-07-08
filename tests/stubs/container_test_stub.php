@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Container;
+namespace Tests\Simple;
 
 use Tests\TestCase;
 

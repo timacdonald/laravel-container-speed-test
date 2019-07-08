@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\WithoutContainer;
+namespace Tests\Simple;
 
 use PHPUnit\Framework\TestCase;
 
