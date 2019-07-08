@@ -62,7 +62,7 @@ class Builder
                 'name' => $this->faker->unique()->domainName,
                 'method' => $this->faker->randomElement(['get', 'post', 'patch', 'delete']),
                 'function' => $this->faker->randomElement(['index', 'create', 'edit', 'update', 'destroy']),
-                'controller' => str_replace([' ', '-'], ['', ''], $this->faker->unique()->jobTitle.'Controller'),
+                'controller' => preg_replace('/[^A-Z]/i', '', $this->faker->unique()->jobTitle.'Controller'),
             ];
         }
 
