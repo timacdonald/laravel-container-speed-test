@@ -6,7 +6,7 @@ If anyone is looking to make the Container faster during tests, this might be a 
 
 ## Getting started
 
-Best place to start is probably just running the build script and checking out the test suites it creates:
+Best place to start is running the build script and checking out the test suites it creates:
 
 ```
 php -f tests/build.php
