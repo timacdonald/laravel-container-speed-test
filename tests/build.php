@@ -7,12 +7,12 @@ $builder = new Tests\Builder;
 /**
  * Generate the test files for both the Conatainer and WithoutContainer test suite.
  */
-$builder->createSimpleTests();
+$builder->createSimpleTests(1500);
 
 /**
  * Generate the route properties to use when making the route files.
  */
-$routes = $builder->loadRoutes();
+$routes = $builder->loadRoutes(100);
 
 /**
  * Populate the routes files

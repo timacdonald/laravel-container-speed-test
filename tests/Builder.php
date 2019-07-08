@@ -52,7 +52,7 @@ class Builder
         }, '');
     }
 
-    public function createRoutes($count = 500)
+    public function createRoutes($count)
     {
         $routes = [];
 
@@ -77,20 +77,42 @@ class Builder
         return $routes;
     }
 
-    public function loadRoutes()
+    public function loadRoutes($count)
     {
-        $path = __DIR__ . "/meta/routes.php";
-
-        if (! file_exists($path)) {
-            $contents = var_export($this->createRoutes(), true);
-
-            file_put_contents($path, "<?php return {$contents};");
+        if ($this->routeCacheExists() && $this->cachedRouteCount() !== $count) {
+            unlink($this->routeCachePath());
         }
 
-        return require $path;
+        if (! $this->routeCacheExists()) {
+            $contents = var_export($this->createRoutes($count), true);
+
+            file_put_contents($this->routeCachePath(), "<?php return {$contents};");
+        }
+
+        return $this->cachedRoutes();
     }
 
-    public function createSimpleTests($count = 1500)
+    private function cachedRouteCount()
+    {
+        return count($this->cachedRoutes()['web']);
+    }
+
+    private function cachedRoutes()
+    {
+        return require $this->routeCachePath();
+    }
+
+    private function routeCacheExists()
+    {
+        return file_exists($this->routeCachePath());
+    }
+
+    private function routeCachePath()
+    {
+        return __DIR__ . "/meta/routes.php";
+    }
+
+    public function createSimpleTests($count)
     {
         /**
          * Generate the methods used in each of the Container and WithoutContainer
